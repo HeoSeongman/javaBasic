@@ -1,0 +1,15 @@
+package 인터페이스;
+
+public class 바나나잭 implements 아이폰잭 {
+
+	@Override
+	public void makeFlat() {
+		System.out.println("검정색으로 납작하게 만든다.");
+	}
+
+	@Override
+	public void makeTwo() {
+		System.out.println("짧은 줄로 2센치로 만든다.");
+	}
+
+}
