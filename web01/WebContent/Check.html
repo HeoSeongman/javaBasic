@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	form {
+		display: inline-block;
+	}
+</style>
+</head>
+<body>
+	
+	<span>날씨 : </span>
+	<form action="check.do" method="get">
+		<select name="weather">
+			<option value="맑음">맑음
+			<option value="흐림">흐림
+			<option value="비옴">비옴
+			<option value="기타">기타
+		</select>
+		<button>전송</button>
+	</form>
+	
+	<hr>
+	
+	<span>내가 왕이 될 상인가 : </span>
+	<form action="check.do" method="post">
+		<input name="king" type="text">
+	</form>
+</body>
+</html>

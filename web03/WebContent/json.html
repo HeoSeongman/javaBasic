@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MOCK_DATA json html</title>
+<script type="text/javascript" src="js/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#btn1").click(function() {
+			$.ajax({
+				url: "./data/MOCK_DATA.json",
+				success: function(data) {
+					list = data;
+					for (let i = 0; i < list.length; i++) {
+						let id = list[i].id;
+						let currency = list[i].currency;
+						
+						$("#result1").append(id + " : " + currency + "<br>");
+					}
+				}
+			})
+		});
+		
+		$("#btn2").click(function() {
+			$.ajax({
+				url: "https://rss.hankyung.com/feed/it.xml",
+				success: function(data) {
+					let items = $(data).find("item");
+					
+					for (let i = 0; i < items.length; i++) {
+						let title = $(items[i]).find("title").text();
+						let link = $(items[i]).find("link").text();
+						
+						$("#result2").append(title + " : " + link + "<br>");
+					}
+				}
+			})
+		})
+		
+		$("#btn3").click(function() {
+			$.ajax({
+				url: "https://api.rss2json.com/v1/api.json",
+				method: "GET",
+				dataType: "json",
+				data: {
+					rss_url: "https://rss.hankyung.com/feed/it.xml",
+					api_key: "8qeetqrwhkhapm6rtr5hfwxh9i2fdvddrdu5xi7m"
+				}
+			}).done(function(res) {
+				if (res.status != "ok") {
+					return;
+				}
+				
+				let list = res.items;
+				for (let i = 0; i < list.length; i++) {
+					//console.log(list[i]);
+					$("#result3").append("<a href=" + list[i].link + ">" + list[i].title + "</a><span>작성자 : " + list[i].author + "</span><br>");
+				}
+			})
+		})
+		
+		$("#btn4").click(function() {
+			$.ajax({
+				url: "https://api.rss2json.com/v1/api.json",
+				method: "GET",
+				dataType: "json",
+				data: {
+					rss_url: "https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=07&plink=RSSREADER",
+					api_key: "8qeetqrwhkhapm6rtr5hfwxh9i2fdvddrdu5xi7m"
+				}
+			}).done(function(res) {
+				if (res.status != "ok") {
+					return;
+				}
+				
+				let list = res.items;
+				for (let i = 0; i < list.length; i++) {
+					//console.log(list[i]);
+					//$("#result4").append("<img src=" + list[i].thumbnail + " style='width: 500px'><br><a href=" + list[i].link + ">" + list[i].title + "</a><br><span>작성자 : " + list[i].author + "</span><br><br>");
+					$("#result4").append("<a href=" + list[i].link + "><img src=" + list[i].thumbnail + " style='width: 500px'><br>" + list[i].title + "</a><br><span>작성자 : " + list[i].author + "</span><br><br>");
+				}
+			})
+		})
+	})
+</script>
+</head>
+<body>
+	<button id="btn1">MOCK_DATA.json 받아오기</button>
+	<div id="result1"></div>
+	<hr>
+	
+	<button id="btn2">한경 rss 받아오기</button>
+	<div id="result2"></div>
+	<hr>
+	
+	<button id="btn3">한경 rss2json 받아오기</button>
+	<div id="result3"></div>
+	<hr>
+	
+	<button id="btn4">sbs rss2json 받아오기</button>
+	<div id="result4"></div>
+	
+</body>
+</html>

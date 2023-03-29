@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQuery-3.6.4</title>
+<script type="text/javascript" src="./js/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#btn1").click(function() {
+			let rain = $("#rain").val();
+			let cloud = $("#cloud").val();
+			let result1 = $("#result1");				
+			
+			if (rain == 1 && cloud == 1) {
+				result1.html("<font color=red>우산 꼭 챙기세요.");
+			} else {
+				//result1.text("우산 확인하세요.");				
+				result1.html("<font color=red>우산 확인하세요.");				
+			}
+			
+		});
+	})
+</script>
+</head>
+<body>
+	<p>비가 오는지? 1) 온다 2) 안온다 <input type="number" id="rain" value="1"></p>
+	<p>구름이 많은지? 1) 많다 2) 적다 <input type="number" id="cloud" value="1">
+		<button id="btn1">결과</button>
+	</p>
+	<p id="result1"></p>
+	<hr>
+</body>
+</html>

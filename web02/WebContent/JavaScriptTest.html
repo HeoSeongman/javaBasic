@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScriptTest</title>
+<style>
+	body {
+		font-size: 30px;
+	}
+	#id {
+		font-size: 50px;
+		font-weight: bold;
+	}
+	
+	.text {
+		font-size: 30px;
+	}
+	
+	#result {
+		background-color: yellow;
+		color: red;
+	}
+</style>
+<script type="text/javascript">
+	function checkID() {
+		let target = document.getElementById("ID").value;
+		if (target == "") {
+			document.getElementById("result").innerHTML = "<p>아이디를 입력하세요.<br>가입 불가능합니다.</p>"
+			return;
+		}
+		
+		if (target.length < 5) {
+			document.getElementById("result").innerHTML = "<p>아이디 5글자 미만.<br>가입 불가능합니다.</p>";
+		} else {			
+			document.getElementById("result").innerHTML = "<p>아이디 5글자 이상.<br>가입 가능합니다.</p>" ;
+			alert("로그인 성공. 네이버로 이동합니다.");
+			location.href = "https://www.naver.com";
+		}
+	}
+	
+	function checkPW() {
+		let target1 = document.getElementById("PW").value;
+		let target2 = document.getElementById("PWPW").value;
+		if (target1 == "") {
+			document.getElementById("result").innerHTML = "<p>비밀번호를 입력하세요.<br>가입 불가능합니다.</p>";
+			return;
+		}
+		
+		if (target1 == target2) {
+			document.getElementById("result").innerHTML = "<p>비밀번호 일치.<br>가입 가능합니다.</p>";
+		} else {
+			document.getElementById("result").innerHTML = "<p>비밀번호 불일치.<br>가입 불가능합니다.</p>";
+		}
+	}
+</script>
+</head>
+<body>
+	<p id="title">자바 스크립트 테스트</p>
+	<hr>
+	<p>아이디 : <input id="ID" class="text">
+		<button onclick="checkID()" class="text">글자 수 확인</button>
+	</p>
+	<p>비밀번호<input id="PW" class="text"></p>
+	<p>비밀번호 확인 : <input id="PWPW" class="text">
+		<button onclick="checkPW()" class="text">비밀번호 확인</button>
+	</p>
+	<hr>
+	
+	<div id="result"></div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>dataset</title>
+<script type="text/javascript" src="js/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#btn1").click(function() {
+			$.ajax({
+				url: "./data/dataset.xml",
+				success: function(data) {
+					let list = $(data).find("record");
+					
+					for (i = 0; i < list.length; i++) {
+						let id = $(list[i]).find("id").text();
+						let first_name = $(list[i]).find("first_name").text();
+						let last_name = $(list[i]).find("last_name").text();
+						let email = $(list[i]).find("email").text();
+						let gender = $(list[i]).find("gender").text();
+						let address = $(list[i]).find("address").text();
+						
+						$("#result").append(id + " : "
+								+ first_name + ", "
+								+ last_name + ", "
+								+ email + ", "
+								+ gender + ", "
+								+ address + "<br>");
+						
+						$.ajax({
+							url: "mock.jsp",
+							data: {
+								id: id,
+								firstName: first_name,
+								lastName: last_name,
+								email: email,
+								gender: gender,
+								address: address
+							},
+							success: function() {
+								console.log("mock.jsp 호출 성공");
+							}
+						})
+					}
+				}
+			})
+		})
+	})
+</script>
+</head>
+<body>
+	<button id="btn1">dataset 가져와서 DB에 넣기</button>
+	<hr>
+	<div id="result"></div>
+</body>
+</html>

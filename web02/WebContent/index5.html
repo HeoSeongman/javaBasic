@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQuery-3.6.4</title>
+<script type="text/javascript" src="./js/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#btn1").click(function() {
+			$("#result1").text(
+					"당신이 먹고 싶은 음식은 " + $("#food").val()
+					+ "이고, 가고 싶은 곳은 " + $("#where").val() + "군요.");
+		});
+		
+		$("#btn2").click(function() {
+			let site = $("#site").val();
+			if (site == "movie") {
+				location.href = "https://www.cgv.co.kr";
+			} else {
+				location.href = "https://flight.naver.com/"
+			}
+		});
+		
+	})
+</script>
+</head>
+<body>
+	<p>먹고 싶은 음식 : <input id="food" value="커피"></p>
+	<p>가고 싶은 장소 : <input id="where" value="바다">
+		<button id="btn1">버튼1</button>
+	</p>
+	<p id="result1"></p>
+	<hr>
+	
+	<input id="site" value="movie">
+	<button id="btn2">이동</button>
+</body>
+</html>

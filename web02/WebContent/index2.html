@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style>
+	#result {
+		width: auto;
+		height:400px;
+		background-color: yellow;
+		color: red;
+		font-size: 50px;
+		
+	}
+</style>
+<script type="text/javascript">
+	function login() {
+		let id = document.getElementById("user").value;
+		let pw = document.getElementById("pw").value;
+		
+		let resultElem = document.getElementById("result");
+		if (id == "root" && pw == "1234") {
+			//alert("로그인 성공");
+			//resultElem.innerHTML = "<b>로그인 성공</b>";
+			resultElem.innerHTML = "<img src=./img/king.jpg>";
+		} else {			
+			//alert("로그인 실패");
+			//resultElem.innerHTML = "<b>로그인 실패</b>";
+			resultElem.innerHTML = "<img src=./img/notking.jpg>";
+		}
+	}
+	
+	function age() {
+		let birth = parseInt(document.getElementById("age").value);
+		//alert((new Date().getFullYear() - birth) + "세 입니다.");
+		document.getElementById("result").innerHTML = (new Date().getFullYear() - birth) + "세 입니다."; 
+	}
+	
+	function rec() {
+		let width = parseFloat(document.getElementById("width").value);
+		let height = parseFloat(document.getElementById("height").value);
+		let result = width * height;
+		//alert("사각형의 넓이는 " + result.toFixed(6) + " px2 입니다.")
+		document.getElementById("result").innerHTML = "사각형의 넓이는 " + result.toFixed(6) + " px2 입니다.";
+	}
+</script>
+<body>
+	<p>아이디 : <input id="user" value="root"></p>
+	<p>비밀번호 : <input id="pw" value="root"></p>
+	<button onclick="login()">로그인 처리</button>
+	<hr>
+	
+	<p>나이계산(태어난 년도) : <input id="age" value="2000"></p>
+	<button onclick="age()">나이 계산</button>
+	<hr>
+	
+	<p>가로 길이 : <input id="width" value="11.11"></p>
+	<p>세로 길이 : <input id="height" value="22.22"></p>
+	<button onclick="rec()">사각형의 넓이</button>
+	
+	<div id="result"></div>
+</body>
+</html>

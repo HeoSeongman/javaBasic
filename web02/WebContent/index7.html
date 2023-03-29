@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQuery-3.6.4</title>
+<script type="text/javascript" src="./js/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#btn1").click(function() {
+			comment = $("#comment").val();
+			picutre = $("#picture").val();			
+			$("#comments").append("<br><p><img src=./img/car" + $("#picture").val() + ".png />" + comment + "</p>");
+		})
+	})
+</script>
+<style>
+
+	#header {
+		position: fixed;
+		background-color: aqua;
+	}
+
+</style>
+</head>
+<body>
+	<div id="header">
+	<p>입력 내용 : 
+		<input id="comment">
+		<select id="picture">
+			<option value="01">1번 사진</option>
+			<option value="02">2번 사진</option>
+			<option value="03">3번 사진</option>
+		</select>
+		<button id="btn1">댓글 추가</button>
+	</p>
+	</div>
+
+	<div id="comments"></div>
+</body>
+</html>

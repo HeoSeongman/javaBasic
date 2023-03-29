@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jsss2</title>
+<script type="text/javascript">
+	function bag1() {
+		let result = document.getElementById("result");
+		
+		switch(document.getElementById("first").value) {
+		case "휴대폰" : result.innerHTML = "<p>휴대폰 사진~~</p>"; break;
+		case "시계" : result.innerHTML = "<p>시계 사진~~</p>"; break;
+		default : result.innerHTML = "<p>아무 사진~~</p>";
+		}
+	}
+	
+	function bag2() {
+		let target = document.getElementById("second").value;
+		if (target == "시계") {
+			location.href = "https://prod.danawa.com/list/?cate=1822193";
+		} else if (target == "가방") {
+			location.href = "https://search.danawa.com/dsearch.php?k1=%EA%B0%80%EB%B0%A9&module=goods&act=dispMain";
+		}
+	}
+</script>
+</head>
+<body>
+	<p>첫번째 물건 : <input id="first">
+		<button onclick="bag1()">첫번째 물건 확인</button>
+	</p>
+	<p>두번째 물건 : <input id="second">
+		<button onclick="bag2()">두번째 물건 확인</button>
+	</p>
+	<hr>
+	<div id="result"></div>
+</body>
+</html>

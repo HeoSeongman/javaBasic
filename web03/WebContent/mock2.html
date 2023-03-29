@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#do").click(function() {
+			$.ajax({
+				url: "./data/mock2.xml",
+				success: function(res) {
+					let list = $(res).find("record");
+					
+					for (let i = 0; i < list.length; i++) {
+						let id = $(list[i]).find("id").text();
+						let currencyCode = $(list[i]).find("currency_code").text();
+						let currency = $(list[i]).find("currency").text();
+						let money = $(list[i]).find("money").text();
+						let personalColor= $(list[i]).find("personal_color").text();
+						let language = $(list[i]).find("language").text();
+						
+						$("#result").append(id + ", " + currencyCode + ", " + currency + ", " + money + ", " + personalColor + ", " + language + "<br>");
+						
+						$.ajax({
+							url: "./mock2.jsp",
+							data: {
+								id: id,
+								currencyCode: currencyCode,
+								currency: currency,
+								money: money,
+								personalColor: personalColor,
+								language: language
+							},
+							success: function() {
+								console.log("mock2.jsp 호출함.");
+							}
+						});
+					}
+				}
+			});
+		});
+	});
+</script>
+</head>
+<body>
+	<button id="do">조별로 해야할 일 불러오기</button>
+	<hr>
+	<div id="result"></div>
+</body>
+</html>

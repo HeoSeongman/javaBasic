@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ajax title here</title>
+<script type="text/javascript" src="./js/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$.ajax({
+			url: "./index.html",
+			data: {},
+			success: function() {
+				alert("성공!");
+			},
+			error: function() {
+				alert("실패!");
+			}
+		})
+	})
+</script>
+</head>
+<body>
+
+</body>
+</html>

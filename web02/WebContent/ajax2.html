@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>내 서버와의 통신</title>
+<script type="text/javascript" src="./js/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#btn1").click(function() {
+			$.ajax({
+				url: "./money.jsp",
+				data: {
+					price: $("#price").val(),
+					payment: $("#payment").val()
+				},
+				success: function(data) {
+					console.log(data);
+					$("#priceResult").text("최종 결제 금액은 " + data + "원입니다.");
+				}
+			});
+		});
+		$("#btn2").click(function() {
+			$.ajax({
+				url: "./idCheck.jsp",
+				data: {
+					id: $("#id").val()
+				},
+				success: function(data) {
+					console.log(data);
+					$("#idResult").text(data);
+				}
+			});
+		});
+		$("#btn3").click(function() {
+			$.ajax({
+				url: "./tel.jsp",
+				data: {
+					tel: $("#tel").val()
+				},
+				success: function(data) {
+					console.log(data);
+					$("#codeResult").text("인증 번호 : " + data);
+				}
+			})
+		})
+	});
+</script>
+</head>
+<body>
+	<p>결제 금액 : <input id="price" type="number" value="0"></p>
+	<p>결제 수단 : 
+		<select id="payment">
+			<option value="1">계좌이체</option>
+			<option value="2">신용카드</option>
+			<option value="3">휴대폰결제</option>
+		</select>
+		<button id="btn1" style="background-color: lime">결제하기</button>
+	</p>
+	<p id="priceResult">결제하기를 눌러 확인하세요.</p>
+	<hr color="red">
+	
+	<p>회원가입할 아이디 : 
+		<input id="id" value="root">
+		<button id="btn2" style="background-color: yellow">아이디 중복 확인</button>
+	</p>
+	<p id="idResult"></p>
+	<hr color="blue">
+	
+	<p>인증받을 전화번호 입력 :
+		<input id="tel" value="01012345678">
+		<button id="btn3" style="background-color: orange">인증번호 받기</button>
+	</p>
+	<p id="codeResult"></p>
+</body>
+</html>

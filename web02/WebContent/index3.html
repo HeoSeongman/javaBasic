@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQuery-3.6.4</title>
+<script type="text/javascript" src="./js/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+	$(function() {
+		//alert("제이쿼리");
+		$("#today").click(function() {
+			alert("btn1이 클릭되었음");
+		})
+		$("#b1").click(function() {
+			alert("버튼1이 클릭됨.")
+		})
+		$("#b2").click(function() {
+			alert("버튼2이 클릭됨.")
+		})
+		$("#b3").click(function() {
+			alert("버튼3이 클릭됨.")
+		})
+	})
+</script>
+</head>
+<body>
+	<p>오늘 요일 : <input id="today" value="목요일"><button id="btn1">주말인지 확인...</button></p>
+	<hr>
+	<button id="b1">버튼1</button>
+	<button id="b2">버튼2</button>
+	<button id="b3">버튼3</button>
+</body>
+</html>

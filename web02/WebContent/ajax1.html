@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>내 서버와의 통신</title>
+<script type="text/javascript" src="./js/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#btn1").click(function() {
+			$.ajax({
+				url: "./ok.html",
+				success: function(data) {
+					console.log(data);
+					$("#result1").html(data);
+				}
+			});
+		});
+		$("#btn2").click(function() {
+			$.ajax({
+				url: "./tour.html",
+				success: function(data) {
+					$("#result2").html(data);
+				}
+			});
+		});
+		$("#btn3").click(function() {
+			$.ajax({
+				url: "./weather.html",
+				success: function(data) {
+					$("#result3").html(data);
+				}
+			});
+		});
+	});
+</script>
+</head>
+<body>
+	<button id="btn1">내 서버 ok.html로 통신</button>
+	<button id="btn2">내 서버 tour.html로 통신</button>
+	<button id="btn3">내 서버 weather.html로 통신</button>
+	<hr>
+	<p id="result1"></p>
+	<p id="result2"></p>
+	<p id="result3"></p>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="./js/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#exchange").click(function() {
+			$.ajax({
+				url: "won.jsp",
+				data: {
+					won: $("#money").val()
+				},
+				success: function(data) {
+					alert(data);
+				}
+			})
+		})
+	})
+</script>
+</head>
+<body>
+	<h3>비동기 통신으로 환율 계산</h3>
+	<input id="money" type="number" value="0">
+	<select id="base">
+		<option value="won">원</option>
+		<option value="doller">달러</option>
+	</select>
+	<span>을(를) </span>
+	<select id="target">
+		<option value="won">원</option>
+		<option value="doller">달러</option>
+	</select>
+	<span>로 <button id="exchange">계산</button></span>
+	<p id="result"></p>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQuery-3.6.4</title>
+<script type="text/javascript" src="./js/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#b1").click(function() {
+			alert("버튼1 클릭함 ==> " + $("#text1").text());
+		})
+		$("#b2").click(function() {
+			alert("버튼2 클릭함 ==> " + $("#text2").val());
+		})
+		$("#b3").click(function() {
+			alert("버튼3 클릭함 == > ");
+			$("#text3").text("내가 들어간다.");
+			$("#text4").val("나의 id는 하핳");
+		})
+	})
+</script>
+</head>
+<body>
+	<h3 id="text1">나는 1번 텍스트</h3>
+	<input id="text2" value="나는 2번의 값">
+	
+	<h3 id="text3">여기 결과가 들어갈 곳</h3>
+	<input id="text4" style="background-color: pink">
+
+	<button id="b1">버튼1</button>
+	<button id="b2">버튼2</button>
+	<button id="b3">버튼3</button>
+</body>
+</html>

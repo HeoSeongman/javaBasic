@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jsss</title>
+<style>
+	body {
+		font-size: 30px;
+	}
+	
+	.text {
+		font-size: 30px;
+	}
+	
+	#result {
+		background-color: green;
+		color: orange;
+		font-size: 30px;
+	}
+	
+</style>
+<script type="text/javascript">
+	function me() {
+		let name = document.getElementById("name").value;
+		let company = document.getElementById("company").value;
+		let position = document.getElementById("position").value;
+		let gender = document.getElementById("gender").value;
+		
+		document.getElementById("result").innerHTML = "<p>" + company + "에 " + position + "으로 있는 " + name + "입니다.</p>";
+		
+		if (gender == "남자") {
+			document.getElementById("resultImg").innerHTML = "<img src=./img/homer.webp >";
+		} else {
+			document.getElementById("resultImg").innerHTML = "<img src=./img/marge.webp >";			
+		}
+	}
+</script>
+</head>
+<body>
+	<p>이름 : <input id="name" class="text"></p>
+	<p>회사명 : <input id="company" class="text"></p>
+	<p>직책 : <input id="position" class="text"></p>
+	<p>성별 : <input id="gender" class="text">
+		<button onclick="me()"  class="text">확인</button>
+	</p>
+	<hr>
+	<div id="result"></div>
+	<div id="resultImg"></div>
+</body>
+</html>
