@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import org.springframework.stereotype.Component;
 
@@ -102,44 +103,28 @@ public class MemberDAO {
 		return vo;
 	}
 	
-	public MemberVO selectAll(String id) {
-		MemberVO vo = null;
+	public ArrayList<MemberVO> selectAll() {
+		ArrayList<MemberVO> list = new ArrayList<MemberVO>();
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
 			Connection connection = DriverManager.getConnection(url, user, pw);
 			
-			String sql = "select * from member where id = ?";
+			String sql = "select * from member";
 			PreparedStatement ps = connection.prepareStatement(sql);
-			ps.setString(1, id);
 			
 			ResultSet result = ps.executeQuery();
 			
-			if (result != null) {
-				System.out.println("검색결과 있음.");
-				
-				while (result.next()) {
-					System.out.println(result.getString(1) + ", "
-							+ result.getString(2) + ", "
-							+ result.getString(3) + ", "
-							+ result.getString(4));					
-				}
-				
-				vo = new MemberVO();
-				vo.setId(result.getString(1));
-				vo.setPw(result.getString(2));
-				vo.setName(result.getString(3));
-				vo.setTel(result.getString(4));
-			} else {
-				System.out.println("검색결과 없음.");
+			while (result.next()) {
+				list.add(new MemberVO(result.getString(1), result.getString(2), result.getString(3), result.getString(4)));
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return vo;
+		return list;
 	}
 	
 	public int login(MemberVO vo) {

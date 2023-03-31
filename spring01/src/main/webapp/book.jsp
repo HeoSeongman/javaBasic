@@ -35,5 +35,10 @@
 		<p>북마크 ID : <input name="id"/></p>
 		<button>북마크 검색 버튼</button>
 	</form>
+	
+	<p>전체 북마크 검색 화면</p>
+	<form action="book_list">
+		<button>전체 북마크 검색 버튼</button>
+	</form>
 </body>
 </html>

@@ -1,5 +1,9 @@
 package com.multi.mvc00;
 
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,13 +19,15 @@ public class MemberController {
 	}
 
 	@RequestMapping("member_login")
-	public String login(MemberVO vo) {
+	public String login(MemberVO vo, HttpSession session) {
 		System.out.println("login 요청됨.");
 		System.out.println(vo);
 		if (dao.login(vo) == 1) {
+			session.setAttribute("id", vo.getId());
+//			return "redirect:bbs.jsp";
 			return "OK";
 		} else {
-			return "NO";
+			return "redirect:member.jsp";
 		}
 	}
 
@@ -51,6 +57,12 @@ public class MemberController {
 		System.out.println("요청된 select id : " + id);
 		MemberVO vo = dao.select(id);
 		model.addAttribute("vo", vo);
+	}
+	
+	@RequestMapping("member_list")
+	public void list(Model model) {
+		ArrayList<MemberVO> list = dao.selectAll();
+		model.addAttribute("list", list);
 	}
 		
 }

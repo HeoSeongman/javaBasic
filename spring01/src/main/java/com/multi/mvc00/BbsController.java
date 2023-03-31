@@ -1,5 +1,9 @@
 package com.multi.mvc00;
 
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,14 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BbsController {
 	
 	@Autowired
-	BbsDAO dao;
+	BbsDAO bbsDAO;
 	
 	@RequestMapping("bbs_insert")
 	public BbsVO insert(BbsVO vo) {
 		System.out.println("bbs_insert 호출됨.");
 		System.out.println(vo.toString());
-		dao.insert(vo);
-		System.out.println(dao.toString());
+		bbsDAO.insert(vo);
+		System.out.println(bbsDAO.toString());
 		return vo;
 	}
 	
@@ -24,8 +28,8 @@ public class BbsController {
 	public BbsVO update(BbsVO vo) {
 		System.out.println("bbs_update 호출됨.");
 		System.out.println(vo.toString());
-		dao.update(vo);
-		System.out.println(dao.toString());
+		bbsDAO.update(vo);
+		System.out.println(bbsDAO.toString());
 		return vo;
 	}
 	
@@ -33,16 +37,20 @@ public class BbsController {
 	public void delete(int no, Model model) {
 		System.out.println("bbs_delete 호출됨.");
 		System.out.println("bbs_delete no : " + no);
-		dao.delete(no);
+		bbsDAO.delete(no);
 		model.addAttribute("no", no);
-		System.out.println(dao.toString());
+		System.out.println(bbsDAO.toString());
 	}
 	
 	@RequestMapping("bbs_select")
-	public void select(int no, Model model) {
-		System.out.println("bbs_select no : " + no);
-		BbsVO vo = dao.select(no);
-		model.addAttribute("vo", vo);
+	public void select(int no, Model model, HttpSession session) {
+		session.setAttribute("vo", bbsDAO.select(no));
+	}
+	
+	@RequestMapping("bbs_list")
+	public void list(Model model) {
+		ArrayList<BbsVO> list = bbsDAO.list();
+		model.addAttribute("list", list);
 	}
 	
 }

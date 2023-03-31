@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import org.springframework.stereotype.Component;
 
@@ -102,6 +103,34 @@ public class BbsDAO {
 		}
 		
 		return vo;
+	}
+	
+	public ArrayList<BbsVO> list() {
+		ArrayList<BbsVO> list = new ArrayList<BbsVO>();
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			Connection connection = DriverManager.getConnection(url, user, pw);
+			
+			String sql = "select * from bbs";
+			PreparedStatement ps = connection.prepareStatement(sql);
+			
+			ResultSet result = ps.executeQuery();
+			
+			while (result.next()) {
+				list.add(new BbsVO(result.getInt(1), result.getString(2), result.getString(3), result.getString(4)));
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
+	public int login(MemberVO vo) {
+		return 1;
 	}
 	
 }
