@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class BbsController {
@@ -63,10 +64,23 @@ public class BbsController {
 		model.addAttribute("vo", bbsDAO.select(no));
 	}
 	
+	@RequestMapping("bbs_one22")
+	@ResponseBody
+	public BbsVO one22(int no) {
+		//model.addAttribute("vo", bbsDAO.select(no));
+		return bbsDAO.select(no);
+	}
+	
 	@RequestMapping("bbs_list")
 	public void list(Model model) {
 		ArrayList<BbsVO> list = bbsDAO.list();
 		model.addAttribute("list", list);
+	}
+	
+	@RequestMapping("bbs_list22")
+	@ResponseBody
+	public ArrayList<BbsVO> list22() {
+		return bbsDAO.list();
 	}
 	
 }

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class MemberController {
@@ -59,11 +60,24 @@ public class MemberController {
 		model.addAttribute("vo", vo);
 	}
 	
+	@RequestMapping("member_select_json")
+	@ResponseBody
+	public MemberVO select(String id) {
+		System.out.println("요청된 select id : " + id);
+		return dao.select(id);
+	}
+	
 	@RequestMapping("member_list")
 	public void list(Model model) {
 		ArrayList<MemberVO> list = dao.selectAll();
 		System.out.println("member_list : " + list.size());
 		model.addAttribute("list", list);
+	}
+	
+	@RequestMapping("member_list_json")
+	@ResponseBody
+	public ArrayList<MemberVO> list() {
+		return dao.selectAll();
 	}
 		
 }
