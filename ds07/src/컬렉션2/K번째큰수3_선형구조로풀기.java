@@ -1,0 +1,30 @@
+package 컬렉션2;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Scanner;
+import java.util.TreeSet;
+
+public class K번째큰수3_선형구조로풀기 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("입력할 개수를 입력 : ");
+		int size = sc.nextInt();
+		System.out.print("?번째 큰 수를 입력 : ");
+		int k = sc.nextInt(); // 2번째로 큰 수
+		ArrayList<Integer> num = new ArrayList<Integer>(size);
+		
+		for (int i = 0; i < size; i++) {
+			System.out.print((i + 1) + "번 째 수 : ");
+			num.add(sc.nextInt());
+		}
+		
+		Collections.sort(num);
+		System.out.println(k + "번째 큰 수 : " + num.get(num.size() - k));
+	}
+
+}
