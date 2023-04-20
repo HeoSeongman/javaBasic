@@ -7,6 +7,6 @@
 <title>member_insert</title>
 </head>
 <body>
-	<p>회원가입 요청됨.</p>
+	<p>회원탈퇴 요청됨.</p>
 </body>
 </html>

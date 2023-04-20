@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>member_insert</title>
+<title>member_select</title>
 </head>
 <body>
-	<p>회원가입 요청됨.</p>
+	<p>회원검색 요청됨.</p>
+	<p>id : ${vo.id }</p>
+	<p>pw : ${vo.pw }</p>
+	<p>name : ${vo.name }</p>
+	<p>tel : ${vo.tel }</p>
 </body>
 </html>

@@ -6,12 +6,21 @@
 		insert into member values (#{id}, #{pw}, #{name}, #{tel})
 	</insert>
 	
-	<delete id="del"  parameterType="memberVO">
+	<delete id="delete"  parameterType="String">
 		delete from member where id = #{id}
 	</delete>
 	
-	<update id="up"  parameterType="memberVO">
+	<update id="update"  parameterType="memberVO">
 		update member set tel = #{tel} where id = #{id}
 	</update>
+	
+	<select id="select" parameterType="String" resultType="memberVO">
+		select * from member where id = #{id}
+	</select>
+	
+	<select id="selectAll" resultType="memberVO">
+		select * from member
+	</select>
+	
 	
 </mapper>
