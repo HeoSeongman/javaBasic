@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- 빈을 등록할 때(싱글톤을 만들 때) 이곳에 설정 
+		@Component 와 같은 역할 
+		1) mybatis 생성 
+		2) dbcp - mybatis에 dbcp를 설정해야함 
+		3) mybatis config - mybatis 설정 담당 
+	-->
+	<!-- 1) mybatis -->
+	<bean id="mystagebox" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="config"></constructor-arg>
+	</bean>
+
+	<!-- 2) dbcp 설정 -->
+	<bean id="dbcp" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/multidb"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+	</bean>
+	
+	<!-- 3) mybatis config 설정 -->
+	<bean id="config" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dbcp"></property>
+		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+	</bean>
+</beans>
