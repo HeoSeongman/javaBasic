@@ -29,6 +29,7 @@
 		<a href="faq?helpCategory=${item }"><button class="btn-large">${item.name }</button></a>
 		</c:forEach>
 	</div>
+	<hr color="red">
 	
 	<div id="other">
 		<a href="contactList">

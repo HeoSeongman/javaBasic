@@ -49,7 +49,7 @@
 	
 	<div id="faqBtnList">
 		<c:forEach items="${helpCategory}" var="item">
-		<a href="faq?helpCategory=${item }"><button>${item.name }</button></a>
+		<a href="faq?helpCategory=${item }"><button class="btn-small">${item.name }</button></a>
 		</c:forEach>
 	</div>
 	

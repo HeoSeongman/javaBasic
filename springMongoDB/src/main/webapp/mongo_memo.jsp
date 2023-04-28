@@ -14,6 +14,29 @@
 				$("#result").html(res);
 			}
 		});
+		
+		$("#push").click(function() {
+			$.ajax({
+				url: "insert.memo",
+				data: {
+					name: $("#name").val(),
+					content: $("#content").val(),
+					weather: $("#weather").val()
+				},
+				success: function (res) {
+					// insert 성공 시, list 갱신
+					$.ajax({
+						url: "list.memo",
+						success: function (res) {
+							$("#result").html(res);
+						}
+					});
+					$("#name").val("");
+					$("#content").val("");
+					$("#weather").val("");
+				}
+			});
+		});
 	});
 
 </script>

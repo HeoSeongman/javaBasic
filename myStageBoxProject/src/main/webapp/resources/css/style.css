@@ -41,6 +41,6 @@ div {
 	padding: 10px;
 }
 
-#faqBtnList a button {
-	margin: 3px;
-} 
+.btn-small {
+	margin: 4px;
+}

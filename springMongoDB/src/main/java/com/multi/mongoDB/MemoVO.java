@@ -23,6 +23,12 @@ public class MemoVO {
 		this.date = date;
 		this.weather = weather;
 	}
+	
+	public MemoVO(String _id, String content) {
+		super();
+		this._id = _id;
+		this.content = content;
+	}
 
 	public String get_id() {
 		return _id;
